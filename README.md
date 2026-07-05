@@ -260,11 +260,13 @@ VITE_API_URL=https://your-backend.onrender.com/api
 
 ### Home Page
 
-> Add a screenshot here.
+![Home Page](screenshots/home.png)
 
 ### Review Results
 
-> Add a screenshot here.
+![Review Results](screenshots/rev1.png)
+
+![Review Results](screenshots/rev2.png)
 
 ---
 
