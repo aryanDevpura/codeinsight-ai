@@ -40,7 +40,6 @@ function App() {
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#ffa116] mb-3 tracking-tight">
             CodeInsight AI
           </h1>
-          <p className="text-gray-400 text-lg">Intelligent code review powered by Gemini</p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
