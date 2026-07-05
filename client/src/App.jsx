@@ -4,6 +4,7 @@ import CodeEditor from './components/CodeEditor';
 import ScoreCard from './components/ScoreCard';
 import ReviewCard from './components/ReviewCard';
 import LoadingSpinner from './components/LoadingSpinner';
+import { reviewCode } from './services/api';
 import './index.css';
 
 function App() {
@@ -13,28 +14,24 @@ function App() {
   const [error, setError] = useState('');
   const [reviewData, setReviewData] = useState(null);
 
-  const handleReviewCode = () => {
-    // Placeholder for Milestone 2 - backend integration comes in Milestone 4
+  const handleReviewCode = async () => {
+    if (!code.trim()) {
+      setError('Please enter some code to review.');
+      return;
+    }
+
     setLoading(true);
     setError('');
     setReviewData(null);
 
-    // Mock delay to show loading state
-    setTimeout(() => {
+    try {
+      const data = await reviewCode(language, code);
+      setReviewData(data);
+    } catch (err) {
+      setError(err.message || 'An unexpected error occurred during review.');
+    } finally {
       setLoading(false);
-      // Example of an error state:
-      // setError('Failed to connect to the review service.');
-      
-      // Mock result placeholder
-      setReviewData({
-        score: 85,
-        complexity: { time: 'O(n)', space: 'O(1)' },
-        bugs: ['Potential null pointer dereference on line 12'],
-        suggestions: ['Use standard library functions for sorting'],
-        review: 'The code is generally well-structured but lacks proper error handling in some edge cases.',
-        refactoredCode: '// Refactored code would appear here\nint main() {\n  return 0;\n}'
-      });
-    }, 1500);
+    }
   };
 
   return (

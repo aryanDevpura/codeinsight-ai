@@ -31,6 +31,13 @@ CRITICAL INSTRUCTIONS:
 - Never return null for any field.
 - If the code cannot be analyzed, still return a valid JSON object with sensible defaults (e.g. score 0, empty arrays for bugs/suggestions, standard complexity).
 
+SCORING RUBRIC (Max 100):
+- Correctness: 40 points
+- Readability: 20 points
+- Efficiency: 20 points
+- Best Practices: 20 points
+Deduct points ONLY for concrete issues. Score consistently for identical code.
+
 Your output must be EXACTLY a valid JSON object matching the following schema. Return ONLY the raw JSON text.
 
 Schema:
@@ -56,6 +63,7 @@ ${code}`;
       contents: prompt,
       config: {
         responseMimeType: 'application/json',
+        temperature: 0.1,
       }
     });
   } catch (error) {
