@@ -281,6 +281,7 @@ VITE_API_URL=https://your-backend.onrender.com/api
 
 ---
 
-## License
+## Notes
 
-This project is licensed under the MIT License.
+- The backend is hosted on Render's free tier. If the service has been idle, the first request may take a short while as the server wakes up.
+- Code reviews rely on the Google Gemini API. If the application displays a **"Gemini API currently unavailable"** or **"Too Many Requests (429)"** error, it is typically due to temporary API rate limits, quota exhaustion, or a temporary service issue on Google's end. Waiting a few minutes before trying again usually resolves the issue.
