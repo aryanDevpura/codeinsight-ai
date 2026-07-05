@@ -1,43 +1,55 @@
-import React from 'react';
+const SectionHeader = ({ color, children }) => (
+  <h4 className={`text-sm font-semibold uppercase tracking-wider ${color} mb-3 flex items-center gap-2`}>
+    {children}
+  </h4>
+);
 
 const ReviewCard = ({ reviewData }) => {
   if (!reviewData) return null;
-  
+
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-md mt-6 text-gray-200">
-      <h3 className="text-xl font-semibold text-white mb-4">Detailed Review</h3>
-      
-      <div className="mb-6">
-        <h4 className="text-lg text-blue-400 mb-2">Analysis</h4>
-        <p className="whitespace-pre-wrap text-gray-300">{reviewData.review}</p>
+    <div className="space-y-5">
+      {/* Analysis */}
+      <div className="bg-[#1e1e1e] border border-[#3e3e42] p-4 rounded-xl">
+        <SectionHeader color="text-gray-300">Analysis</SectionHeader>
+        <p className="whitespace-pre-wrap text-sm text-gray-400 leading-relaxed">{reviewData.review}</p>
       </div>
 
+      {/* Bugs */}
       {reviewData.bugs && reviewData.bugs.length > 0 && (
-        <div className="mb-6">
-          <h4 className="text-lg text-red-400 mb-2">Bugs Identified</h4>
-          <ul className="list-disc pl-5 space-y-1">
+        <div className="bg-[#1e1e1e] border border-[#ff375f]/50 p-4 rounded-xl">
+          <SectionHeader color="text-[#ff375f]">Bugs Identified ({reviewData.bugs.length})</SectionHeader>
+          <ul className="space-y-2">
             {reviewData.bugs.map((bug, i) => (
-              <li key={i} className="text-gray-300">{bug}</li>
+              <li key={i} className="flex items-start gap-2 text-sm text-gray-400">
+                <span className="text-[#ff375f] mt-0.5">•</span>
+                <span>{bug}</span>
+              </li>
             ))}
           </ul>
         </div>
       )}
 
+      {/* Suggestions */}
       {reviewData.suggestions && reviewData.suggestions.length > 0 && (
-        <div className="mb-6">
-          <h4 className="text-lg text-yellow-400 mb-2">Suggestions</h4>
-          <ul className="list-disc pl-5 space-y-1">
+        <div className="bg-[#1e1e1e] border border-[#ffc01e]/50 p-4 rounded-xl">
+          <SectionHeader color="text-[#ffc01e]">Suggestions ({reviewData.suggestions.length})</SectionHeader>
+          <ul className="space-y-2">
             {reviewData.suggestions.map((suggestion, i) => (
-              <li key={i} className="text-gray-300">{suggestion}</li>
+              <li key={i} className="flex items-start gap-2 text-sm text-gray-400">
+                <span className="text-[#ffc01e] mt-0.5">•</span>
+                <span>{suggestion}</span>
+              </li>
             ))}
           </ul>
         </div>
       )}
 
+      {/* Refactored Code */}
       {reviewData.refactoredCode && (
-        <div>
-          <h4 className="text-lg text-green-400 mb-2">Refactored Code</h4>
-          <pre className="bg-gray-900 p-4 rounded-md overflow-x-auto text-sm font-mono text-gray-300">
+        <div className="bg-[#1e1e1e] border border-[#00b8a3]/50 p-4 rounded-xl">
+          <SectionHeader color="text-[#00b8a3]">Refactored Code</SectionHeader>
+          <pre className="bg-black/30 p-4 rounded-lg overflow-x-auto text-sm font-mono text-gray-300 leading-relaxed">
             <code>{reviewData.refactoredCode}</code>
           </pre>
         </div>

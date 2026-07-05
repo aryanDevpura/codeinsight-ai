@@ -1,15 +1,13 @@
-import React from 'react';
-
 const LanguageSelector = ({ selected, onSelect }) => {
   const languages = ['C++', 'Java', 'Python', 'C'];
 
   return (
-    <div className="flex items-center gap-4 mb-4">
-      <label className="text-gray-300 font-medium">Select Language:</label>
+    <div className="flex items-center gap-3">
+      <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Language</label>
       <select
         value={selected}
         onChange={(e) => onSelect(e.target.value)}
-        className="bg-gray-800 text-white border border-gray-600 rounded-md p-2 outline-none focus:border-blue-500"
+        className="bg-[#282828] text-gray-200 border border-[#3e3e42] rounded-lg px-3 py-2 text-sm outline-none focus:border-[#ffa116] transition-colors cursor-pointer"
       >
         {languages.map((lang) => (
           <option key={lang} value={lang}>
